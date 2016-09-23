@@ -1,1 +1,4 @@
-# ORIE4741
+## Why the problem is important?
+According to statistics, there were 5,250,000 existing homes and 510,000 newly constructed homes were sold in 2015, which means there were around 11 transactions were completed on home trading per minute. In addition, large real estate marketplace like Zillow has more than 10,000,000 listings nation wide. We can see that the real estate market is very active and is critical to people's daily life. However, there is a lack of a powerful assitant tool that is able to help users to decide when to buy a house and which houses are worthy of consideration.  
+
+That is to say, when someone is looking for a house to buy, he or she would be really interested in the following questions: If the current price of the house is fair and acceptable? Should I consider buying a house recently or wait for a while? By analyzing the data of past transactions and current local listings, we can provide suggestions to the users that if the price listed by the agent or on a website is reasonable, and would the price go higher or lower in the future.
