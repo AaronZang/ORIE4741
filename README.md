@@ -1,4 +1,9 @@
-## Why the problem is important?
-According to statistics, there were 5,250,000 existing homes and 510,000 newly constructed homes were sold in 2015, which means there were around 11 transactions were completed on home trading per minute. In addition, large real estate marketplace like Zillow has more than 10,000,000 listings nation wide. We can see that the real estate market is very active and is critical to people's daily life. However, there is a lack of a powerful assitant tool that is able to help users to decide when to buy a house and which houses are worthy of consideration.  
+## Group Members
+Shibo Zang, Yangwen Wan, Yingjie Li
 
-That is to say, when someone is looking for a house to buy, he or she would be really interested in the following questions: If the current price of the house is fair and acceptable? Should I consider buying a house recently or wait for a while? By analyzing the data of past transactions and current local listings, we can provide suggestions to the users that if the price listed by the agent or on a website is reasonable, and would the price go higher or lower in the future.
+{sz428, yw762, yl2552}@cornell.edu
+
+##Project Description
+By analyzing the data of past transactions and current local listings, we seek to provide suggestions to a someone looking to buy a property in NYC that if the price listed by the agent or on a website is reasonable, and would the price go higher or lower in the future.
+
+We will primarily train our model on a dataset of the annualized properties sales from the year 2003 to 2015, provided by New York City Department of Finance. This dataset covers 13 years of properties sales data for all 5 boroughs of New York as well as descriptive information on those sold properties . Each data entry represents one property sold and it’s detailed geographical and numerical information. 
