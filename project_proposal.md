@@ -1,5 +1,5 @@
 
-##Home Purchase Assistance
+<center>##Home Purchase Assistance</center>
 
 Shibo Zang, Yangwen Wan, Yingjie Li
 
