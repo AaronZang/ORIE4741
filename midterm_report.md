@@ -45,11 +45,13 @@ The impact of building class on real estate properties.
 The total units in the properties is negatively correlated with housing prices.
 
 ### Preliminary Regressions
-As described in the previous section, we have included the following columns in our input matrix for regression models: average price in the neighborhood, year the property was built, 4 “one-hot-encoding” columns to represent the categorical tax class, land squared feet and gross squared feet along the offset. For example, the first row in the matrix looks like the following: [ 1.37516e6  1920.0  0.0  1.0  0.0  0.0   2401.0   6920.0  1.0 ]
+As described in the previous section, we have included the following columns in our input matrix for regression models: average price in the neighborhood, year the property was built, 4 “one-hot-encoding” columns to represent the categorical tax class, land squared feet and gross squared feet along the offset. 
+
+For example, the first row in the matrix looks like the following: [ 1.37516e6  1920.0  0.0  1.0  0.0  0.0   2401.0   6920.0  1.0 ]
 
 We chose the 2009 Manhattan sales data for a quick look and split the data set into training set and test set that are equally large. Then we train L2 linear regression, ridge regression (λ=1) and Lasso regression (λ=1) models on the training set and checked out their performance on the test sets.
 
-<img src="https://github.com/AaronZang/ORIE4741-Home-Purchase-Assistance/blob/master/image/Summary%20Statistics%20for%202009%20Transactions.png">  
+<img src="https://github.com/AaronZang/ORIE4741-Home-Purchase-Assistance/blob/master/image/result.PNG">  
 
 ### Model Evaluation
 We plan to build individual model for each year and for each borough individually. In the future work, we would like to split our dataset into training (70%), validation (20%), test(10%) on each year and each borough to further tune our parameters. Thus, we can use cross validation or k-fold validation to evaluate our model.
