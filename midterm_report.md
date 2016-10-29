@@ -51,7 +51,7 @@ For example, the first row in the matrix looks like the following: [ 1.37516e6  
 
 We chose the 2009 Manhattan sales data for a quick look and split the data set into training set and test set that are equally large. Then we train L2 linear regression, ridge regression (λ=1) and Lasso regression (λ=1) models on the training set and checked out their performance on the test sets.
 
-<img src="https://github.com/AaronZang/ORIE4741-Home-Purchase-Assistance/blob/master/image/result.PNG">  
+<img src="https://github.com/AaronZang/ORIE4741-Home-Purchase-Assistance/blob/master/image/results.PNG">  
 
 ### Model Evaluation
 We plan to build individual model for each year and for each borough individually. In the future work, we would like to split our dataset into training (70%), validation (20%), test(10%) on each year and each borough to further tune our parameters. Thus, we can use cross validation or k-fold validation to evaluate our model.
