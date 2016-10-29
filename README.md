@@ -1,7 +1,7 @@
 ## Group Members
-Shibo Zang, Yangwen Wan, Yingjie Li
+Shibo Zang, Yangwen Wan
 
-{sz428, yw762, yl2552}@cornell.edu
+{sz428, yw762}@cornell.edu
 
 ##Project Description
 By analyzing the data of past transactions and current local listings, we seek to provide suggestions to someone looking to buy a property in NYC on whether the price offered is reasonable and whether it would go higher or lower in the future.
