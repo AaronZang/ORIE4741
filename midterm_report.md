@@ -18,7 +18,6 @@ Furthermore, the average price in all boroughs underwent a decline since 2008 du
 ### Feature Selection & Engineering
 We would like to select those features that have close relationship with the price of real estate properties and hopefully can be independent with each other. There are several factors that we felt would have an impact on the price: location / neighborhood, building type (apartment / house / condo), year built, building class (one-bedroom / two-bedroom / studio), etc.. Basing on the dataset we have on hand, we selected or generated the following features for our model:
 
-- Building Class At Time of Sale: The building classification follows the “NYC Building Classifications”, which is used to describe a property’s constructive use. For example, “A” signifies on-family homes, “O” signifies office building, “R” signifies condominiums. More specifically, the number on the second position adds more specific information about the property’s use or construction style, e.g. “O4” is a tower type office buliding.
 - Tax Class at Present: Every property in the city is assigned to one of four tax classes based on the use of the property.
 Total Units: Sum of residential units (number of residential units at the listed property) and commercial units (number of commercial units at the listed property).
 - Land Square Feet: The land area of the property listed in square feet.
@@ -26,7 +25,7 @@ Total Units: Sum of residential units (number of residential units at the listed
 - Year Built: Year the structure on the property was built.
 - Neighborhood Average Price: Each real estate property unit is marked uniquely by a Borough-Block-Lot identifier. This gave us a natural advantage to group close real properties together by “Block” number, whereas using street address, which is hard to analyze and organize, and zipcode is too broad to define a neighborhood. Therefore, the neighborhood average price would be a strong indicator signifying the price of the property you are looking at.  
 
-As we discussed above, you might find that some features are numerical, and some features are categorical like ‘Building Class At Time Of Sale’ and ‘Tax Class At Present’. Since most regression models or ML algorithms cannot fit categorical variables, we are going to use dummy coding to convert a categorical feature into continuous variable. For example, there are four tax classes, we can have four features ‘Tax Class A’, ‘Tax Class B’, ‘Tax Class C’, and ‘Tax Class D’. Presence of a tax class is represented by 1 and absence is represented by 0.  
+As we discussed above, you might find that some features are numerical, and some features are categorical like ‘Tax Class At Present’. Since most regression models or ML algorithms cannot fit categorical variables, we are going to use dummy coding to convert a categorical feature into continuous variable. For example, there are four tax classes, we can have four features ‘Tax Class A’, ‘Tax Class B’, ‘Tax Class C’, and ‘Tax Class D’. Presence of a tax class is represented by 1 and absence is represented by 0.  
 
 The other thing we did when we cleaned and prepared the data is to standardize the range of those features. As you can see the range of the year when the property was built is from 1900 to 2009, whereas the neighborhood average price ranges from 10,000 to 5,000,000. We normalize features by calculating their standard scores $x’ = \frac{x-\bar{x}}{\sigma}$, where $\bar{x}$ is mean and $\sigma$ is the standard deviation.  
 
@@ -47,3 +46,12 @@ The total units in the properties is negatively correlated with housing prices.
 
 ### Model Evaluation
 We planned to build individual model for each year and for each borough individually. That is to say, we need to split our dataset into training (70%), validation (20%), test(10%) on each year and each borough. Thus, we can use cross validation or k-fold validation to evaluate our model.
+
+### Future Work
+We plan to incorporate many more relevant features in our model and try out different feature mapping functions φ(x).
+
+First, building class at time of sale and building class at present are two highly correlated features that are much more specific than the feature of tax class. Each building belongs to one of more than 20 classes. Also, the feature called total units can break into the number of residential and commercial units separately. 
+
+More importantly, there are 6 significant geographical features remain unused which mean a great deal in justifying the transaction price. They are borough, neighborhood, block, lot, address (number plus street name) and zip code. Apparently, these feature depend on each other as a specific address must lie within a fixed zip code area. We ignore address because it is too hard to encode them in our matrix. Although lot is the most specific geographical feature next to address, we expect using block along will suffice. Unlike lot, every single block in the New York City has a unique code in this data set so we can use it directly. And we know the information conveyed in this feature already incorporates information conveyed in broader features including neighborhood, zip code and borough. 
+
+Finally, we could consider including the time of sale as house prices may experience seasonal fluctuations. Given the general trend of property price is probably determined by larger changing economic environment, we may collect more data reflecting the overall financial or economic condition of the city or the entire country if time permits such that our model can predict changing prices over years.
