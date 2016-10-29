@@ -1,7 +1,6 @@
 # Midterm Report: Home Purchase Assistant
 ## Shibo Zang (sz428), Yangwen Wan (yw762)
 
-### Dataset Description
 ### Feature Selection & Engineering
 We would like to select those features that have close relationship with the price of real estate properties and hopefully can be independent with each other. There are several factors that we felt would have an impact on the price: location / neighborhood, building type (apartment / house / condo), year built, building class (one-bedroom / two-bedroom / studio), etc.. Basing on the dataset we have on hand, we selected or generated the following features for our model:
 
@@ -20,14 +19,17 @@ The other thing we did when we cleaned and prepared the data is to standardize t
 Since we have more than 10,000 records per borough each year, we are expecting to have the underfitting issue in our model. From feature engineering’s perspective, the way to avoid underfitting is to add more features, either from external resources or apply transformation on existing features. There are some other financial factors that may affect price of real estate properties such as people’s average annual income, GDP, inflation rate, etc. We are trying to gather these information and append them as new features to our model. On the other hand, we can generate new features using existing features by computing the production or exponentiation of feature values.
 
 ### Preliminary Analyses
-![Relationship between blocks and housing prices](https://github.com/AaronZang/ORIE4741-Home-Purchase-Assistance/blob/master/image/Housing%20Price%20-%20Block.png)  
+<img src="./image/Housing Price - Block.png" width="500">  
 
 As we can see from the above picture, real estate properties located between block 500 to block 1500 generally have higher prices than other properties located in other properties.  
 
-![Relationship between building class and housing prices](https://github.com/AaronZang/ORIE4741-Home-Purchase-Assistance/blob/master/image/Housing%20Price%20-%20Building%20Class.png)  
+<img src="./image/Housing Price - Building Class.png" width="500">   
 
 The impact of building class on real estate properties.  
 
-![Relationship between total units and housing prices](https://github.com/AaronZang/ORIE4741-Home-Purchase-Assistance/blob/master/image/Housing%20Price%20-%20Total%20Units.png)  
+<img src="./image/Housing Price - Total Units.png" width="500">  
 
 The total units in the properties is negatively correlated with housing prices.
+
+### Model Evaluation
+We planned to build individual model for each year and for each borough individually. That is to say, we need to split our dataset into training (70%), validation (20%), test(10%) on each year and each borough. Thus, we can use cross validation or k-fold validation to evaluate our model.
