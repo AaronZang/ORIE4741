@@ -34,3 +34,7 @@ In addition, we found that some of the entries are questionable even in those wh
 <img src="https://github.com/AaronZang/ORIE4741-Home-Purchase-Assistance/blob/master/image/bo.png">
 
 <img src="https://github.com/AaronZang/ORIE4741-Home-Purchase-Assistance/blob/master/image/go.png">
+
+# Results Evaluation
+
+<img src="https://github.com/AaronZang/ORIE4741-Home-Purchase-Assistance/blob/master/image/ratio%20hist.png">
