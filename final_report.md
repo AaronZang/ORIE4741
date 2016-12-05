@@ -111,7 +111,7 @@ By applying l1 regression on the test set, the results are as follow:
 | ------| ------ | ------ | ------ | ------ |
 | L1 | Zero | 199168 | 61.6% |
 
-### Conclusion & Future Work
+### Conclusion 
 In this project, we tried to predict the housing price in New York City given the past sales data. We did data cleaning, data preprocessing, feature selection and transformation, and we tried several regresssion algorithms and choose the one with the best performance on the validation set.  
 
-In all, we think the main difficulty of our project is the messy data. Besides missing / wrong entries, most of the fields in the dataset are categorical features. In the future we can try to explore more methods on dealing with categorical features and try to reduce the dependency among features.
+In all, we think the main difficulty of our project is the messy data. We tried our best to rule out as much messy data as possible however we can not guarantee that all remaning numbers are truthful and valid. Besides this, we still don't have many descriptive features about the properties themselves (e.g. furnitues, layout, facilities) so our model can not predict based on more details of the properties. Due to the existence of so much messy data and a lack of detailed property information, our models are still hard to use in production at this stage. 
