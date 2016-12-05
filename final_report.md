@@ -49,7 +49,7 @@ Besides these original features we have considered the sale price might also be 
 
 <img src="https://github.com/AaronZang/ORIE4741-Home-Purchase-Assistance/blob/master/image/bo.png">
 
-We take this idea a litter further and precompte the average per sqft price for every possible pair of neighborhood-building category pair. We end up with a even stronger linear pattern between the product and actual sale price.
+We take this idea a litter further and precompte the average per sqft price for every possible pair of neighborhood and building category. We end up with a even stronger linear pattern between the product and actual sale price.
 
 <img src="https://github.com/AaronZang/ORIE4741-Home-Purchase-Assistance/blob/master/image/go.png">
 
