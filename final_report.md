@@ -40,15 +40,15 @@ We thought about using other methods that are taught in class to deal with missi
 <img src="https://github.com/AaronZang/ORIE4741-Home-Purchase-Assistance/blob/master/image/go.png">
 
 #### Models & Algorithms
-##### Technique 1 Split data into training, validation, and testing set.
+**Technique 1 Split data into training, validation, and testing set.**  
 Compared to our initial idea in the midterm report to train individual model for each borough, currently we trained our model using all the data in New York City, and using the "BOROUGH" as a new feature in the model. The advantage enables us to have enough data to train, validate, and test our model. In the current setting, we split our data to training (70%), validation(20%), and testing (10%) set.
 
-##### Technique 2 Least Absolute (l1) loss without regularizer
+**Technique 2 Least Absolute (l1) loss without regularizer** 
 We applied l1 loss function without regularizer on our training set and compare our prediction to the actual housing price on the validation set.  
 <img src="https://github.com/AaronZang/ORIE4741-Home-Purchase-Assistance/blob/master/image/ratios.png">  
 From the above histogram we observed that most of our prediction can be considered as "good estimates", which means they fall in the range within $\pm$ 25% of the actual value.
 
-##### Techinque 3 Quadratic Loss with zero regularizer (Least Squares Regression), l1 regularizer (Lasso Regression), and l2 regularizer (Ridge Regression)
+**Techinque 3 Quadratic Loss with zero regularizer (Least Squares Regression), l1 regularizer (Lasso Regression), and l2 regularizer (Ridge Regression)**  
 **Least Square Regression**  
 <img src="https://github.com/AaronZang/ORIE4741-Home-Purchase-Assistance/blob/master/image/lsr.png">  
 **Lasso Regression**  
@@ -58,7 +58,7 @@ From the above histogram we observed that most of our prediction can be consider
 
 The above histograms show the prediction results we got from three different models. We observed that most prediction results fall in the "good estimates" range. Lasso regression performs slightly worse than least square regression and ridge regression.
 
-##### Technique 4 Huber Loss with zero regularizer, l1 regularizer, and l2 regularizer
+**Technique 4 Huber Loss with zero regularizer, l1 regularizer, and l2 regularizer**  
 **Zero regularizer**  
 <img src="https://github.com/AaronZang/ORIE4741-Home-Purchase-Assistance/blob/master/image/huber_zero.png">  
 **L1 regularizer**  
@@ -68,7 +68,7 @@ The above histograms show the prediction results we got from three different mod
 
 As we can see from the above histograms, huber regression performed almost the same given three different regularizer, meaning huber loss can help to reduce the impact from outliers.
 
-##### Technique 5 Apply proximal gradient method on the above models
+**Technique 5 Apply proximal gradient method on the above models**  
 To get a better estimation of the stepsize we should use in the gradient descent method, we applied proximal gradient linear searching provided by Professor Udell to achieve faster convergence. 
 
 ### Results Evaluation
