@@ -37,4 +37,4 @@ In addition, we found that some of the entries are questionable even in those wh
 
 ### Results Evaluation
 
-<img src="https://github.com/AaronZang/ORIE4741-Home-Purchase-Assistance/blob/master/image/ratio%20hist.png">
+<img src="https://github.com/AaronZang/ORIE4741-Home-Purchase-Assistance/blob/master/image/ratios.png">
