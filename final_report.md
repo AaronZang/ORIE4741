@@ -26,3 +26,11 @@ The first thing we noticed about the dataset was a large part of missing data. A
 In addition, we found that some of the entries are questionable even in those where there's no missing data. For example, some entries with really low or high property sale price is clearly wrong and cannot be used. To define a reasonable threshold, we did some research online. From https://www.trulia.com/real_estate/New_York-New_York/market-trends/, it is reasonable to say that the real estate property unit price should be at least \$10 per square feet. Thus, we only consider the properties whose price is above \$10 per square feet. There's several other cases where the data is wrong, such as entries with gross square feet less than 10, or the residential unit and commercial unit doesn't add up to the corresponding total unit.
 
 <img src="https://github.com/AaronZang/ORIE4741-Home-Purchase-Assistance/blob/master/image/data_distribution.png">
+
+### Feature Selection & Transformation
+
+<img src="https://github.com/AaronZang/ORIE4741-Home-Purchase-Assistance/blob/master/image/ro.png">
+
+<img src="https://github.com/AaronZang/ORIE4741-Home-Purchase-Assistance/blob/master/image/bo.png">
+
+<img src="https://github.com/AaronZang/ORIE4741-Home-Purchase-Assistance/blob/master/image/go.png">
