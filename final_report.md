@@ -23,19 +23,33 @@ Furthermore, the average price in all boroughs underwent a decline since 2008 du
 ### Techniques & Methods
 
 #### Data Cleaning & Preprocessing
-The first thing we noticed about the dataset was a large part of missing data. As you can see from the above dataset description, we have around 33.8% sales records that are incomplete (incomplete records are those who has value 0 in at least one field).  
+The first thing we noticed about the dataset was a large part of missing data. As you can see from the above dataset description, we have around 33.8% sales records that are incomplete (incomplete records are those who has value 0 in sale price or gross squared feet of the property or total units columns (see below for definitions).  
 
 In addition, we found that some of the entries are questionable even in those where there's no missing data. For example, some entries with really low or high property sale price is clearly wrong and cannot be used. To define a reasonable threshold, we did some research online. From https://www.trulia.com/real_estate/New_York-New_York/market-trends/, it is reasonable to say that the real estate property unit price should be at least \$10 per square feet. Thus, we only consider the properties whose price is above \$10 per square feet. There's several other cases where the data is wrong, such as entries with gross square feet less than 10, or the residential unit and commercial unit doesn't add up to the corresponding total unit.
 
 <img src="https://github.com/AaronZang/ORIE4741-Home-Purchase-Assistance/blob/master/image/data_distribution.png">
 
-We thought about using other methods that are taught in class to deal with missing data such as filling in missing entries with row or column mean, or predicting the missing entries using other rows or columns. The reasons we believed that just dropping missing entries work the best in our case is that: 1). We have ~ 35% missing entries and most missing entries are blank entries. If we just filled them with mean or a certain predicted value, the entries we filled in may largely affect our model. 2). We have ~ 75,000 records in total for a year. After data preprocessing & cleaning, the clean entries left are ~ 25,000, which is adequate for our training process.
+We thought about using other methods that are taught in class to deal with missing data such as filling in missing entries with row or column mean, or predicting the missing entries using other rows or columns. The reasons we believed that just dropping missing entries work the best in our case is that: 1). We have ~ 35% missing entries and most missing entries are blank entries. If we just filled them with mean or a certain predicted value, the entries we filled in may largely affect our model. 2). We have ~ 75,000 records in total for a year. After data preprocessing & cleaning, the clean entries left are ~ 30,000, which is adequate for our training process.
 
 #### Feature Selection & Transformation
+
+The dataset consists of many relevant attributes of the property sales. However many of the features are highly correlated or redundant in nature and we choose to drop out some of them. More importantly, we have performed some tranformations on these features to better represent them when constructing our input space matrix. The followings are the original features in the dataset we choose to use with their explanations and transformations we performed:
+
+- Borough: This is one of the 5 boroughs in NYC (Manhattanm, Queens, Brooklyn, Bronx and Staten Island) in which the property is located. Since this is a categorical feature, we use add 5 columns and use dummy coding to represent its value.
+- Tax Class at Time of Sale: Every property in the city is assigned to one of four tax classes based on the use of the property. In the dataset we actually have more similar features such as "Tax Class at Present" and other more trival classification of the tax class but we believe "tax class at the time of sale" is more relevant and simple. And again we use dummy coding to represent this.
+- Building Class Category: This implies the expected type of usage of the properties. There are many categories are substantially different from residential homes in nature and their attributes and prices do not follow the same pattern such as "factories", "hospitals" and "vacant land". After a close examniation of these types, we choose to consider only 8 of them: "01  ONE FAMILY HOMES", "02  TWO FAMILY HOMES", , "03  THREE FAMILY HOMES", "04  TAX CLASS 1 CONDOS", "07  RENTALS - WALKUP APARTMENTS", "12  CONDOS - WALKUP APARTMENTS", "13  CONDOS - ELEVATOR APARTMENTS", "15  CONDOS - 2-10 UNIT RESIDENTIAL". We direcly exlude other categories from tarining or test set. That left us with about 26000 entries for 2009. Again we precompute each category's average price per sqft and use that to replace the norminal values.  
+- Neighborhood Average Price: Each property must lies within one of 184 neigborhoods (e.g. Soho, Greenwhich Village) in NYC. While this value is categorical, we did not want to add 184 columns to  use dummy coding for simplicity. We expect properties in the same neigborhood are good subsitites for each other and their price per sqft should be highly correlated. So we precomputed each neigborhood's averge price per sqft and use that to replace the norminal neigborhood name.
+- Total Units: Sum of residential units (number of residential units at the listed property) and commercial units (number of commercial units at the listed property). We also have columns for the number of residential and commerical units in the cleaned data set but for many records these 2 values are not reported but the total units are valid. So we decided to use the total units only.
+- Gross Squared Feet: The total area of all the floors of a building. While we still have land sqft in the dataset, they are mostly not reported in Manhattan or belong to sales of special kinds of properties (like "vacant land") we don't want to predict
+- Year Built: Year the structure on the property was built.
+
+Besides these original features we have considered the sale price might also be linear with the products or powers of them. Especially after we have precomputed the averge per sqft price of all neigborhoods and all building categories, it is intuitive that we can multiply these averages by property sizes (gross sqft). we have found that that these products values have demonsatrated apparent linear patterns with the sale price and decided to use them in the input space.
 
 <img src="https://github.com/AaronZang/ORIE4741-Home-Purchase-Assistance/blob/master/image/ro.png">
 
 <img src="https://github.com/AaronZang/ORIE4741-Home-Purchase-Assistance/blob/master/image/bo.png">
+
+We take this idea a litter further and precompte the average per sqft price for every possible pair of neighborhood and building category. We end up with a even stronger linear pattern between the product and actual sale price.
 
 <img src="https://github.com/AaronZang/ORIE4741-Home-Purchase-Assistance/blob/master/image/go.png">
 
@@ -97,7 +111,7 @@ By applying l1 regression on the test set, the results are as follow:
 | ------| ------ | ------ | ------ | ------ |
 | L1 | Zero | 199168 | 61.6% |
 
-### Conclusion & Future Work
+### Conclusion 
 In this project, we tried to predict the housing price in New York City given the past sales data. We did data cleaning, data preprocessing, feature selection and transformation, and we tried several regresssion algorithms and choose the one with the best performance on the validation set.  
 
-In all, we think the main difficulty of our project is the messy data. Besides missing / wrong entries, most of the fields in the dataset are categorical features. In the future we can try to explore more methods on dealing with categorical features and try to reduce the dependency among features.
+In all, we think the main difficulty of our project is the messy data. We tried our best to rule out as much messy data as possible however we can not guarantee that all remaning numbers are truthful and valid. Besides this, we still don't have many descriptive features about the properties themselves (e.g. furnitures, layout, facilities) so our model can not predict based on more details of the properties. Due to the existence of potential messy data and a lack of detailed property information, our models are still hard to use in production at this stage. 
